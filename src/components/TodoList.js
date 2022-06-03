@@ -8,8 +8,10 @@ const TodoList = () => {
   const [compteur, setcompteur] = useState(
     parseInt(Cookies.get("cookie")) || 0
   );
-  const [vie, setvie] = useState(0);
-  const [maxVie, setMaxVie] = useState(125);
+  const [vie, setvie] = useState(parseInt(Cookies.get("healt")) || 125);
+  const [maxVie, setMaxVie] = useState(
+    parseInt(Cookies.get("maxHealt")) || 125
+  );
 
   console.log(" Je suis " + maxVie);
 
@@ -28,7 +30,7 @@ const TodoList = () => {
         title={compteur}
         compteur={compteur}
         setcompteur={setcompteur}
-        cb={3}
+        cb={30}
         healt={vie}
         sethealt={setvie}
       />

@@ -1,0 +1,25 @@
+.bonus_img {
+    width: 200px;
+    height: auto;
+    max-height: 200px;
+}
+
+.bonus_name {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.bonus_opacity {
+    opacity: 0.5;
+    text-align: center;
+}
+
+h2 {
+    margin: 0;
+}
+
+h1 {
+    margin-bottom: 10px;
+}

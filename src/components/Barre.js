@@ -1,11 +1,15 @@
 import React from "react";
 import "../style/Bar.css";
+import Cookies from "js-cookie";
 
 const Barre = (props) => {
   let sethealt = props.sethealt;
   let healt = props.healt;
   let maxHealt = props.maxHealt;
   let setMaxHealt = props.setMaxHealt;
+
+  Cookies.set("healt", parseInt(healt));
+  Cookies.set("maxHealt", parseInt(maxHealt));
 
   if (healt <= 0) {
     setMaxHealt(maxHealt * 1.5);
