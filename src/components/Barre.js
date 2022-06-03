@@ -18,8 +18,6 @@ const Barre = (props) => {
 
   let pourcentage_life = String((healt / maxHealt) * 100);
 
-  console.log(pourcentage_life);
-
   // document.getElementsByClassName("Filling")[0].style.width = pourcentage_life;
 
   return (

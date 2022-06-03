@@ -11,9 +11,11 @@ const Bonus = ({
   let nb_Bonus = 0; //destroy
   let opacity = 0.2;
 
-  console.log("dede");
   if (compteur >= price_bonus) {
     opacity = 1;
+  } else {
+    console.log(compteur);
+    console.log(price_bonus);
   }
 
   return (

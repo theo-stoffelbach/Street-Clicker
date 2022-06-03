@@ -1,12 +1,11 @@
 import "./style.css";
-import TodoList from "./components/TodoList";
+import Main from "./components/Main";
 import Test3 from "./components/Test3";
 
 function App() {
   return (
-    <div className="Main">
-      <h1>My clicker</h1>
-      <TodoList />
+    <div>
+      <Main />
       {/* <Test3 /> */}
     </div>
   );

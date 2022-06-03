@@ -1,0 +1,8 @@
+#navbar_bonus {
+    display: block;
+    border: black 10px solid;
+    width: 10%;
+    height: 100vh;
+    position: left;
+    float: left;
+}
