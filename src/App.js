@@ -6,8 +6,8 @@ function App() {
   return (
     <div className="Main">
       <h1>My clicker</h1>
-      {/* <TodoList /> */}
-      <Test3 />
+      <TodoList />
+      {/* <Test3 /> */}
     </div>
   );
 }
