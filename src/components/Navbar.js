@@ -17,7 +17,7 @@ const Navbar = ({ compteur, setcompteur }) => {
       <Bonus
         compteur={compteur}
         setcompteur={setcompteur}
-        Name_Bonus={"Bonus#3"}
+        Name_Bonus={"Bonus#1"}
         url_image="https://img.icons8.com/external-icongeek26-flat-icongeek26/128/external-scroll-war-icongeek26-flat-icongeek26.png"
         price_bonus={100}
       />
