@@ -19,11 +19,11 @@ const Navbar = ({ compteur, setcompteur }) => {
         setcompteur={setcompteur}
         Name_Bonus={"Bonus#3"}
         url_image="https://img.icons8.com/external-icongeek26-flat-icongeek26/128/external-scroll-war-icongeek26-flat-icongeek26.png"
-        price_bonus={5}
+        price_bonus={100}
       />
       <hr />
     </div>
-  );
+  )
 };
 
 export default Navbar;

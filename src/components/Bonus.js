@@ -17,11 +17,22 @@ const Bonus = ({
     console.log(compteur);
     console.log(price_bonus);
   }
-
+  function bonusAdd(counter, price) { /* Voir pour cette fonction car je ne peux pas modif le nb_bonus */
+    if (counter >= price) {
+      alert("Add Bonus");
+    } else {
+      alert("No enought");
+    }
+  }
   return (
     <div id = "all_bonus" style={{ opacity: opacity }}>
       <h1 className="bonus_name">
-        <img src={url_image} alt="Icon Bonus 1" className="bonus_img" />
+        <img 
+        onClick={() => bonusAdd(compteur, price_bonus)} 
+        src={url_image} 
+        alt="Icon Bonus 1" 
+        className="bonus_img"
+        />
         {Name_Bonus}
       </h1>
       <h2> You have : {nb_Bonus}</h2>
