@@ -17,7 +17,7 @@ const Bonus = ({
     console.log(compteur);
     console.log(price_bonus);
   }
-  function bonusAdd(counter, price, nb_bonus) {
+  function bonusAdd(counter, price) {
     if (counter >= price) {
       console.log(nb_bonus) //
       set_nb_bonus(nb_bonus + 1)
@@ -30,7 +30,7 @@ const Bonus = ({
     <div id = "all_bonus" style={{ opacity: opacity }}>
       <h1 className="bonus_name">
         <img 
-        onClick={() => bonusAdd(compteur, price_bonus, nb_bonus)} 
+        onClick={() => bonusAdd(compteur, price_bonus)} 
         src={url_image} 
         alt="Icon Bonus 1" 
         className="bonus_img"
