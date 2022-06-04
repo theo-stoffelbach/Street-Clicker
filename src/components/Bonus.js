@@ -19,7 +19,7 @@ const Bonus = ({
   }
 
   return (
-    <div style={{ opacity: opacity }}>
+    <div id = "all_bonus" style={{ opacity: opacity }}>
       <h1 className="bonus_name">
         <img src={url_image} alt="Icon Bonus 1" className="bonus_img" />
         {Name_Bonus}

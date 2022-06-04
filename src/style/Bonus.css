@@ -1,3 +1,7 @@
+#all_bonus {
+    display:flex;
+    flex-direction: column;
+}
 .bonus_img {
     width: 100px;
     height: auto;

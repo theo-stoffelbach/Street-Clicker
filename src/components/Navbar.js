@@ -13,6 +13,7 @@ const Navbar = ({ compteur, setcompteur }) => {
         url_image="https://img.icons8.com/external-icongeek26-flat-icongeek26/128/external-scroll-war-icongeek26-flat-icongeek26.png"
         price_bonus={25}
       />
+      <hr />
       <Bonus
         compteur={compteur}
         setcompteur={setcompteur}
@@ -20,6 +21,7 @@ const Navbar = ({ compteur, setcompteur }) => {
         url_image="https://img.icons8.com/external-icongeek26-flat-icongeek26/128/external-scroll-war-icongeek26-flat-icongeek26.png"
         price_bonus={5}
       />
+      <hr />
     </div>
   );
 };
