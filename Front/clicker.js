@@ -12,3 +12,8 @@ clickerButton.addEventListener("click", function () {
   console.log(lifeMonster);
 });
 
+function random(min, max) {
+  Math.random();
+}
+
+function GeneratorOfMob(zone) {}

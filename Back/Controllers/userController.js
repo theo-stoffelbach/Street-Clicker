@@ -6,15 +6,61 @@ exports.userCreator = (req, res) => {
 
   user
     .save()
-    .then((userModel) => {
-      return res.status(201).json(userModel);
+    .then((createUser) => {
+      return res.status(201).json(createUser);
     })
     .catch((err) => {
       return res.status(400).json(err);
     });
 };
 
-// const Cat = mongoose.model("Cat", { name: String });
+exports.connection = (req, res) => {
+  const id = req.params.id;
 
-// const kitty = new Cat({ name: "Zildjian" });
-// kitty.save().then(() => console.log("meow"));
+  userModel
+    .findOne({ _id: id })
+    .then((user) => {
+      return res.status(200).json(user);
+    })
+    .catch((err) => {
+      return res.status(400).json(err);
+    });
+};
+
+// const res = await Person.replaceOne({ _id: 24601 }, { name: 'Jean Valjean' });
+
+// PostModel.findByIdAndUpdate(
+//   req.params.id,
+//   { $set: updatedRecord },
+//   { new: true },
+//   (err, docs) => {
+//     if (!err) res.send(docs);
+//     else console.log("Update error : " + err);
+//   }
+// );
+
+exports.getAll = (req, res) => {
+  userModel
+    .find()
+    .then((users) => {
+      return res.status(200).json(users);
+    })
+    .catch((err) => {
+      return res.status(404).json(err);
+    });
+};
+
+exports.update = (req, res) => {
+  const user = new userModel(req.body);
+
+  const query = { pseudo: user.lookfor };
+  userModel
+    .findOneAndUpdate(query, { pseudo: user.pseudo })
+    .then((users) => {
+      console.log(user);
+      return res.status(201).json(users);
+    })
+    .catch((err) => {
+      return res.status(404).json(err);
+    });
+};
