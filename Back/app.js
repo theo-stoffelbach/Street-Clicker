@@ -1,17 +1,25 @@
 const express = require("express");
 const app = express();
+const bodyParser = require("body-parser");
+
+const userRouter = require("./rooter/userRouter");
 
 const mongoose = require("mongoose");
-mongoose.connect(
-  "mongodb+srv://fs:FloriantetsonJs...@cluster0.fbppb.mongodb.net/Kitty",
-  {
-    useNewUrlParser: true,
-    UseUnifiedTopology: true,
-  }).;
+mongoose
+  .connect(
+    "mongodb+srv://fs:FloriantetsonJs...@cluster0.fbppb.mongodb.net/Kitty",
+    {
+      useNewUrlParser: true,
+      UseUnifiedTopology: true,
+    }
+  )
+  .then(() => {
+    console.log("conncetion reussit avec la BD");
+  })
+  .catch(() => console.log(error));
 
-const Cat = mongoose.model("Cat", { name: String });
+app.use(bodyParser.json());
 
-const kitty = new Cat({ name: "Zildjian" });
-kitty.save().then(() => console.log("meow"));
+app.use("/api/user", userRouter);
 
 module.exports = app;
