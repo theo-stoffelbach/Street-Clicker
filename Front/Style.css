@@ -26,13 +26,12 @@ main {
 }
 .lifeMax {
   border: black 3px solid;
-  margin: 20px;
   width: 400px;
-  height: 15px;
+  height: 20px;
 }
 
 .life {
   height:100%;
-  width: 80%;
+  width: 100%;
   background: greenyellow;
 }
