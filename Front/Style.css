@@ -24,10 +24,15 @@ main {
   align-items: center;
   border: red 2px solid;
 }
-.life {
+.lifeMax {
   border: black 3px solid;
   margin: 20px;
   width: 400px;
   height: 15px;
-  background-color: greenyellow;
+}
+
+.life {
+  height:100%;
+  width: 80%;
+  background: greenyellow;
 }
