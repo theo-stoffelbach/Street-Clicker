@@ -10,7 +10,7 @@ var calculPercentage = 0;
 
 function clicker() {
   lifeMonster--;
-  result = lifeMonster;
+  result++;
   if (lifeMonster <= 0) {
     generatorMob(1);
   }
@@ -21,7 +21,7 @@ function clicker() {
 
 clickerButton.addEventListener("click", function () {
   clicker();
-  scoreP.innerHTML = lifeMonster;
+  scoreP.innerHTML = result;
 });
 
 function random(max, min) {
