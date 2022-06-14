@@ -33,19 +33,30 @@ a {
     width: 10%;
   }
   
-  main {
-    display: flex;
-    justify-content: center;
-  }
-  
   #main_clicker {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  /* Ne touche surtout pas au dessus sinon tu es mort jordan tu dois écrire en dessous*/
-
   .inValidForm {
     opacity: 50%;
+  }
+  main {
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    border: red 2px solid;
+  }
+  #title {
+    display: flex; 
+    justify-content:center;
+    border: red 2px solid;
+  }
+  #form_login {
+    display: flex;
+    justify-content:center;
+    flex-direction: column;
+    border: red 2px solid;
+    width: 10%;
   }
