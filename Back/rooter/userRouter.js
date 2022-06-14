@@ -4,7 +4,7 @@ const userController = require("../Controllers/userController");
 
 router.get("/a", userController.getAll);
 
-router.post("/post", userController.userCreator);
+router.post("/create", userController.userCreator);
 
 router.get("/:id", userController.connection);
 

@@ -64,3 +64,18 @@ exports.update = (req, res) => {
       return res.status(404).json(err);
     });
 };
+
+exports.delete = (req, res) => {
+  const user = new userModel(req.body);
+
+  const query = { pseudo: user.lookfor };
+  userModel
+    .findOneAndUpdate(query, { pseudo: user.pseudo })
+    .then((users) => {
+      console.log(user);
+      return res.status(201).json(users);
+    })
+    .catch((err) => {
+      return res.status(404).json(err);
+    });
+};

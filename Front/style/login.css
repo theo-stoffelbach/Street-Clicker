@@ -45,3 +45,7 @@ a {
   }
 
   /* Ne touche surtout pas au dessus sinon tu es mort jordan tu dois écrire en dessous*/
+
+  .inValidForm {
+    opacity: 50%;
+  }

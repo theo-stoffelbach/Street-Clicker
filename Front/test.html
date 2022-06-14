@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style/login.css">
+</head>
+<body>
+    <form action="" method="POST">
+        <input
+        type="text"
+        name="emailAdress"
+        id="inputEmail"
+        placeholder="Mettez votre adress mail, s'il vous plait"
+        onkeydown="validatorEmail()"
+      />;
+        <input
+        type="text"
+        name="password"
+        id="inputPassword"
+        placeholder="Mettez votre mot de passe, s'il vous plait"
+        onkeydown="validatorpassword()"
+      />;
+        <input type="submit" value="Envoie des données" id="inputSubmit" class="inValidForm">
+    </form>
+
+
+    <script src="clickerTheo.js"></script>
+
+</body>
+</html>

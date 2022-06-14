@@ -17,6 +17,17 @@ const user = mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  ban: {
+    data: {
+      type: Date,
+    },
+    whoBan: {
+      type: String,
+    },
+    timeBan: {
+      type: Date,
+    },
+  },
 });
 
 module.exports = mongoose.model("user", user);
