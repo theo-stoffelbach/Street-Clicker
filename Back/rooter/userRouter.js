@@ -7,7 +7,9 @@ const userController = require("../Controllers/userController");
 //   return res.status(201).json("Yopi ca marcuhe");
 // });
 
-router.post("/create", userController.userCreator);
+router.post("/login", userController.login);
+router.post("/create/test", userController.Testpost);
+router.post("/create/user", userController.userCreator);
 router.get("/a", userController.getAll);
 
 router.get("/:id", userController.connection);

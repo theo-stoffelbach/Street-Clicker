@@ -1,6 +1,7 @@
 var emailValidForm,
   passwordValidForm,
-  emailValidForm = (passwordValidForm = 0);
+  PseudoValidForm,
+  emailValidForm = (passwordValidForm = inputPseudoValue = 0);
 
 console.log(
   emailValidForm + " = " + passwordValidForm + " = " + emailValidForm
@@ -65,19 +66,11 @@ function sendData() {
   var sendData = {
     email: inputEmailValue,
     password: inputPasswordValue,
+    pseudo: inputPseudoValue,
   };
   sendData = JSON.stringify(sendData);
   console.log(sendData);
-
-  // console.log(inputEmailValue + " + " + inputPasswordValue);
 }
-
-var sendData = {
-  pseudo: "Snakeshader",
-  password: "paslevrai",
-  email: "Snakeshader@gmail.com",
-};
-console.log(sendData);
 
 function test() {
   console.log("halo");

@@ -28,6 +28,10 @@ const user = mongoose.Schema({
       type: Date,
     },
   },
+  status: {
+    type: String,
+    required: true,
+  },
 });
 
 module.exports = mongoose.model("user", user);
