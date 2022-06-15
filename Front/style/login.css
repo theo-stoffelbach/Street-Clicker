@@ -33,19 +33,40 @@ a {
     width: 10%;
   }
   
-  main {
-    display: flex;
-    justify-content: center;
-  }
-  
   #main_clicker {
     display: flex;
     flex-direction: column;
     align-items: center;
   }
 
-  /* Ne touche surtout pas au dessus sinon tu es mort jordan tu dois écrire en dessous*/
-
   .inValidForm {
     opacity: 50%;
+  }
+  h1 {
+    display: flex;
+    justify-content: center;
+    font-size: 50px;
+  }
+  main {
+    display: flex;
+    justify-content:center;
+  }
+  #form_login {
+    display: flex;
+    flex-direction: column;
+  }
+  #form_login input {
+    margin-top: 5%;
+    margin-bottom: 10%;
+    border-radius: 5px;
+    padding: 5px 5px 5px 5px;
+  }
+  button {
+    border-radius: 5px;
+    padding: 5px 5px 5px 5px;
+    background-color: rgba(120, 255, 139, 1);
+    font-weight: 700;
+  }
+  button:hover {
+    background-color: rgba(87, 197, 102, 1);
   }

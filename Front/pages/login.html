@@ -10,18 +10,22 @@
 <body>
   <nav id = "menu">
     <div id = "main_nav">
-      <a href = "login.html"><p>Login</p></a>
+      <a href = "index.html"><p>Home</p></a>
       <a href = "register.html"><p>Register</p></a>
     </div>
   </nav>
+  <h1>Connexion</h1>
   <main>
-    <!-- Tu devras mettre ton code principal dans cette balise jordan sinon je te tue-->
-    <form action="" method="POST">
+    <form id = "form_login" action="" method="POST">
       <input
+      type = "email"
       id="inputEmail"
       onkeydown="validatorEmail()"
-    />;
+      value = "Email"
+      size="30"
+      />
       <input
+      type = "password"
       id="inputPassword"
       onkeydown="validatorpassword()"
 
@@ -29,9 +33,17 @@
       <button id="inputSubmit" class="inValidForm">
   </form>
   </main>
-
-  <script src="../script/testScriptTheo.js"></script>
-
-
 </body>
+<script src="../script/testScriptTheo.js"></script>
+<script>
+  var takeInputEmail = document.querySelector("#inputEmail");
+  var takeInputPassword = document.querySelector("#inputPassword");
+
+  takeInputEmail.addEventListener('click', function() {
+    takeInputEmail.value = "";
+  });
+  takeInputPassword.addEventListener('click', function() {
+    takeInputPassword.value = "";
+  });
+</script>
 </html>
