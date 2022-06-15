@@ -1,106 +1,101 @@
-console.log("JS Launched");
+var emailValidForm,
+  passwordValidForm,
+  emailValidForm = (passwordValidForm = 0);
 
-const lifeText = document.querySelector(".life");
-const clickerButton = document.querySelector("#btn_clicker");
-const scoreP = document.querySelector(".score");
-var totalLifeMonster = 2;
-var result = 0;
-var lifeMonster = 2;
-var calculPercentage = 0;
+console.log(
+  emailValidForm + " = " + passwordValidForm + " = " + emailValidForm
+);
 
-function clicker() {
-  lifeMonster--;
-  result++;
-  if (lifeMonster <= 0) {
-    generatorMob(1);
+function validatorEmail() {
+  let inputEmail = document.getElementById("inputEmail");
+  let inputEmailValue = document.getElementById("inputEmail").value;
+
+  let paternEmail = /^[^ ]+@+[^ ]+\.[a-z]{2,10}$/;
+
+  if (inputEmailValue.match(paternEmail)) {
+    inputEmail.classList.add("validAdressEmail");
+    inputEmail.classList.remove("inValidAdressEmail");
+    emailValidForm = 1;
+  } else {
+    inputEmail.classList.add("inValidAdressEmail");
+    inputEmail.classList.remove("validAdressEmail");
+    emailValidForm = 0;
   }
-  calculPercentage = Math.round((lifeMonster / totalLifeMonster) * 100) + "%";
-  console.log(calculPercentage);
-  lifeText.style.width = calculPercentage;
+  validatorForm();
 }
 
-clickerButton.addEventListener("click", function () {
-  clicker();
-  scoreP.innerHTML = result;
-});
+function validatorpassword() {
+  let inputPassword = document.getElementById("inputPassword");
+  let inputPasswordValue = document.getElementById("inputPassword").value;
+  let inputPasswordList = inputPasswordValue.split("");
 
-function random(max, min) {
-  return Math.floor(Math.random() * (max - min + 1) + min);
+  console.log(inputPassword);
+  console.log(inputPasswordList.length);
+
+  if (inputPasswordList.length >= 8 && inputPasswordList.length < 32) {
+    console.log("valid");
+    inputPassword.classList.add("validPassword");
+    inputPassword.classList.remove("inValidPassword");
+    passwordValidForm = 1;
+  } else {
+    console.log("invalid");
+    inputPassword.classList.add("inValidPassword");
+    inputPassword.classList.remove("validPassword");
+    passwordValidForm = 0;
+  }
+  validatorForm();
 }
 
-// for (n = 0; n < 100; n++) {
-//   let randomvar = random(30, 10);
-//   console.log(randomvar);
-// }
+function validatorForm() {
+  let inputForm = document.getElementById("inputSubmit");
 
-function generatorMob(zone) {
-  switch (zone) {
-    case 1:
-      totalLifeMonster = random(30, 10);
-      lifeMonster = totalLifeMonster;
-      break;
-    default:
-      lifeMonster = random(1, 1);
-      break;
+  if (passwordValidForm == 1 && emailValidForm == 1) {
+    inputForm.classList.add("validForm");
+    inputForm.classList.remove("inValidForm");
+  } else {
+    inputForm.classList.add("inValidForm");
+    inputForm.classList.remove("validForm");
   }
 }
 
-// var emailValidForm,
-//   passwordValidForm,
-//   emailValidForm = (passwordValidForm = 0);
+function sendData() {
+  let inputEmailValue = document.getElementById("inputEmail").value;
+  let inputPasswordValue = document.getElementById("inputPassword").value;
 
-// console.log(
-//   emailValidForm + " = " + passwordValidForm + " = " + emailValidForm
-// );
+  var sendData = {
+    email: inputEmailValue,
+    password: inputPasswordValue,
+  };
+  sendData = JSON.stringify(sendData);
+  console.log(sendData);
 
-// function validatorEmail() {
-//   let inputEmail = document.getElementById("inputEmail");
-//   let inputEmailValue = document.getElementById("inputEmail").value;
+  // console.log(inputEmailValue + " + " + inputPasswordValue);
+}
 
-//   let paternEmail = /^[^ ]+@+[^ ]+\.[a-z]{2,10}$/;
+var sendData = {
+  pseudo: "Snakeshader",
+  password: "paslevrai",
+  email: "Snakeshader@gmail.com",
+};
+console.log(sendData);
 
-//   if (inputEmailValue.match(paternEmail)) {
-//     inputEmail.classList.add("validAdressEmail");
-//     inputEmail.classList.remove("inValidAdressEmail");
-//     emailValidForm = 1;
-//   } else {
-//     inputEmail.classList.add("inValidAdressEmail");
-//     inputEmail.classList.remove("validAdressEmail");
-//     emailValidForm = 0;
-//   }
-//   validatorForm();
-// }
+function test() {
+  console.log("halo");
 
-// function validatorpassword() {
-//   let inputPassword = document.getElementById("inputPassword");
-//   let inputPasswordValue = document.getElementById("inputPassword").value;
-//   let inputPasswordList = inputPasswordValue.split("");
+  // axios
+  //   .get("http://192.168.1.45:1337/api/user/a")
+  //   .then((response) => console.log(response))
+  //   .catch((err) => console.log(err));
 
-//   console.log(inputPassword);
-//   console.log(inputPasswordList.length);
+  console.log(sendData);
 
-//   if (inputPasswordList.length >= 8 && inputPasswordList.length < 32) {
-//     console.log("valid");
-//     inputPassword.classList.add("validPassword");
-//     inputPassword.classList.remove("inValidPassword");
-//     passwordValidForm = 1;
-//   } else {
-//     console.log("invalid");
-//     inputPassword.classList.add("inValidPassword");
-//     inputPassword.classList.remove("validPassword");
-//     passwordValidForm = 0;
-//   }
-//   validatorForm();
-// }
+  axios
+    .post("http://192.168.1.45:1337/api/user/create", {
+      pseudo: "Je vais me couper les couilles",
+      password: "avec les dents",
+      email: "couille@gmail.org",
+    })
+    .then((res) => console.log(res));
 
-// function validatorForm() {
-//   let inputForm = document.getElementById("inputSubmit");
-
-//   if (passwordValidForm == 1 && emailValidForm == 1) {
-//     inputForm.classList.add("validForm");
-//     inputForm.classList.remove("inValidForm");
-//   } else {
-//     inputForm.classList.add("inValidForm");
-//     inputForm.classList.remove("validForm");
-//   }
-// }
+  console.log("E,d");
+}

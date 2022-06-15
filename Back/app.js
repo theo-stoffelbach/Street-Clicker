@@ -1,10 +1,14 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const userRouter = require("./rooter/userRouter");
 
 const mongoose = require("mongoose");
+
+app.use(cors());
+
 mongoose
   .connect(
     "mongodb+srv://fs:FloriantetsonJs...@cluster0.fbppb.mongodb.net/Kitty",
