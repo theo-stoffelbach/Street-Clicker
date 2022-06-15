@@ -23,6 +23,11 @@ exports.userCreator = (req, res) => {
   const pseudo = req.body.pseudo;
   const email = req.body.email;
   const password = req.body.password;
+  const jordan = req.body.jordan;
+
+  if ((jordan != "undefined" && jordan != "true") || jordan == "false")
+    userData.status = "Admin";
+  else userData.status = "Jordan";
 
   console.log(
     "pseudo : " + pseudo + " email : " + email + " password : " + password
@@ -35,9 +40,8 @@ exports.userCreator = (req, res) => {
   };
 
   userData.password = encryption(password);
-  userData.status = "Admin";
 
-  console.log(userData);
+  console.log("\n\nstatus : " + userData.status + "\n\n");
 
   userData
     .save()

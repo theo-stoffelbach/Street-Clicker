@@ -1,0 +1,79 @@
+body {
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+h1 {
+    margin-top: 100px;
+    margin-bottom: 50px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+input {
+    margin: 20px;
+    height: 30px;
+    width: 400px;
+
+    padding-left: 10px;
+    font-size: 18px;
+
+    border: 3px solid black;
+    border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+button {
+    margin-top: 50px;
+    margin: 20px;
+    height: 36px;
+    width: 416px;
+
+    font-size: 18px;
+    color: white;
+    background: rgb(0, 79, 0);
+    border-radius: 10px;
+
+}
+
+.inValidPassword, .inValidAdressEmail, .invalidPseudo {
+    border: 3px solid red;
+}
+
+.validPassword, .validAdressEmail, .validPseudo {
+    border: 3px solid green;
+}
+
+.inValidForm {
+    opacity: 20%;
+}
+
+.validForm {
+    opacity: 100%;
+    cursor: pointer;
+}
+
+#jordanCheck {
+    display: flex;
+    align-items: center;
+
+}
+
+input[type="checkbox"] {
+    margin-left: 30px;
+    height: 18px;
+    width: 18px;
+}
+
+label {
+    font-family: 'Roboto', sans-serif;
+}

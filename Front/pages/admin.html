@@ -5,9 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Test You don't have at Here !!!</title>
-    <link rel="stylesheet" href="../style/login.css">
-    <link rel="stylesheet" href="../style/test.css">
+    <link rel="stylesheet" href="../style/admin.css">
     <link rel="icon" href="../asset/hadouken-hadoken-pixel-art-ryu-others-V2.png">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
 
     <!-- <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script> -->
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
@@ -15,29 +15,46 @@
 
   </head>
 <body>
-  <h1> Inscription - Admin </h1>
+    <h1> Inscription - Admin </h1>
+
     <form action="#" method="POST" id="containerForm" onsubmit="return false">
-      <input
-      type="text"
-      name="Pseudo"
-      id="inputPseudo"
-      placeholder="Mettez votre pseudo, s'il vous plait"
-      onkeydown="validatorpseudo()"
-    />;
+        <input
+        type="text"
+        name="Pseudo"
+        id="inputPseudo"
+        placeholder="Mettez votre pseudo"
+        onkeydown="validatorpseudo()"
+      />
         <input
         type="text"
         name="emailAdress"
         id="inputEmail"
-        placeholder="Mettez votre adress mail, s'il vous plait"
+        placeholder="Mettez votre adress mail"
         onkeydown="validatorEmail()"
-      />;
+      />
         <input
         type="text"
         name="password"
         id="inputPassword"
-        placeholder="Mettez votre mot de passe, s'il vous plait"
+        placeholder="Mettez votre mot de passe"
         onkeydown="validatorpassword()"
-      />;
+      />
+        <input
+        type="text"
+        name="color"
+        id="inputColor"
+        placeholder="Mettez la couleur / hexa de votre Pseudo Admin "
+      />
+      <div id="jordanCheck">
+        <input
+        type="checkbox"
+        name="jordan"
+        id="inputJordan"
+        placeholder="Are you Jordan  ?"
+        onclick="Jordan()"
+      />
+      <label for="jordan"> Are you Jordan ?</label>
+    </div>
         <button type="submit" id="inputSubmit" class="inValidForm" onclick="sendData()"> Envoie des données </button> 
         <!-- <button type="submit" id="inputSubmit" class="inValidForm" onclick="test()"> Test </button>  -->
     </form>

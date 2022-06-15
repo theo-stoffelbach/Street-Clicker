@@ -32,6 +32,9 @@ const user = mongoose.Schema({
     type: String,
     required: true,
   },
+  colorAdmin: {
+    type: String,
+  },
 });
 
 module.exports = mongoose.model("user", user);

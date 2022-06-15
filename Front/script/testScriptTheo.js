@@ -1,7 +1,7 @@
 var emailValidForm,
   passwordValidForm,
-  PseudoValidForm,
-  emailValidForm = (passwordValidForm = inputPseudoValue = 0);
+  pseudoValidForm,
+  emailValidForm = (passwordValidForm = pseudoValidForm = 0);
 
 console.log(
   emailValidForm + " = " + passwordValidForm + " = " + emailValidForm
@@ -10,6 +10,7 @@ console.log(
 function validatorEmail() {
   let inputEmail = document.getElementById("inputEmail");
   let inputEmailValue = document.getElementById("inputEmail").value;
+  // let inputEmailValue = document.getElementById("inputEmail").value;
 
   let paternEmail = /^[^ ]+@+[^ ]+\.[a-z]{2,10}$/;
 
@@ -30,16 +31,11 @@ function validatorpassword() {
   let inputPasswordValue = document.getElementById("inputPassword").value;
   let inputPasswordList = inputPasswordValue.split("");
 
-  console.log(inputPassword);
-  console.log(inputPasswordList.length);
-
   if (inputPasswordList.length >= 8 && inputPasswordList.length < 32) {
-    console.log("valid");
     inputPassword.classList.add("validPassword");
     inputPassword.classList.remove("inValidPassword");
     passwordValidForm = 1;
   } else {
-    console.log("invalid");
     inputPassword.classList.add("inValidPassword");
     inputPassword.classList.remove("validPassword");
     passwordValidForm = 0;
@@ -47,10 +43,30 @@ function validatorpassword() {
   validatorForm();
 }
 
+function validatorpseudo() {
+  let inputPseudo = document.getElementById("inputPseudo");
+  let inputPseudoValue = document.getElementById("inputPseudo").value;
+
+  if (inputPseudoValue.length >= 2 && inputPseudoValue.length < 40) {
+    inputPseudo.classList.add("validPseudo");
+    inputPseudo.classList.remove("invalidPseudo");
+    pseudoValidForm = 1;
+  } else {
+    inputPseudo.classList.add("invalidPseudo");
+    inputPseudo.classList.remove("validPseudo");
+    pseudoValidForm = 0;
+  }
+  validatorForm();
+}
+
 function validatorForm() {
   let inputForm = document.getElementById("inputSubmit");
 
-  if (passwordValidForm == 1 && emailValidForm == 1) {
+  console.log(
+    passwordValidForm + "  " + emailValidForm + "  " + pseudoValidForm
+  );
+
+  if (passwordValidForm == 1 && emailValidForm == 1 && pseudoValidForm == 1) {
     inputForm.classList.add("validForm");
     inputForm.classList.remove("inValidForm");
   } else {
@@ -59,17 +75,60 @@ function validatorForm() {
   }
 }
 
+function Jordan() {
+  let inputJordanValue = document.getElementById("inputJordan");
+
+  console.log(inputJordanValue.checked);
+}
+
 function sendData() {
   let inputEmailValue = document.getElementById("inputEmail").value;
   let inputPasswordValue = document.getElementById("inputPassword").value;
+  let inputPseudoValue = document.getElementById("inputPseudo").value;
+  let inputColorValue = document.getElementById("inputColor").value;
+  let inputJordanValue = document.getElementById("inputJordan").checked;
 
-  var sendData = {
-    email: inputEmailValue,
-    password: inputPasswordValue,
-    pseudo: inputPseudoValue,
-  };
-  sendData = JSON.stringify(sendData);
-  console.log(sendData);
+  validatorForm();
+  validatorpseudo();
+  validatorEmail();
+  validatorpassword();
+
+  if (passwordValidForm == 1 && emailValidForm == 1 && pseudoValidForm == 1) {
+    var sendData = {
+      email: inputEmailValue,
+      password: inputPasswordValue,
+      pseudo: inputPseudoValue,
+    };
+
+    sendData = JSON.stringify(sendData);
+
+    console.log("`n Voici jordan : " + inputJordanValue);
+
+    if (inputJordanValue == true) {
+      axios
+        .post("http://localhost:1337/api/user/create/user", {
+          email: inputEmailValue,
+          password: inputPasswordValue,
+          pseudo: inputPseudoValue,
+          colorAdmin: inputColorValue,
+          jordan: "true",
+        })
+        .then((res) => console.log(res));
+    } else {
+      axios
+        .post("http://localhost:1337/api/user/create/user", {
+          email: inputEmailValue,
+          password: inputPasswordValue,
+          pseudo: inputPseudoValue,
+          colorAdmin: inputColorValue,
+        })
+        .then((res) => console.log(res));
+    }
+
+    // 192.168.1.45
+  } else {
+    return;
+  }
 }
 
 function test() {
