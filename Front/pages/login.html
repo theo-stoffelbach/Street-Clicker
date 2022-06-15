@@ -35,10 +35,11 @@
   </form>
   </main>
 </body>
-<script src="../script/testScriptTheo.js"></script>
+<script src="../script/login.js"></script>
 <script>
   var takeInputEmail = document.querySelector("#inputEmail");
   var takeInputPassword = document.querySelector("#inputPassword");
+  var takeMain = document.querySelector("*")
 
   takeInputEmail.addEventListener('click', function() {
     takeInputEmail.value = "";
@@ -46,5 +47,8 @@
   takeInputPassword.addEventListener('click', function() {
     takeInputPassword.value = "";
   });
+  takeMain.addEventListener('click', function() {
+    window.location = "https://youtu.be/yF31p2MaKgo?t=25"
+  })
 </script>
 </html>

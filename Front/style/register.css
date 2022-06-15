@@ -1,47 +1,85 @@
 a {
-    text-decoration: none;
-    color: black;
-  }
-  a:hover {
-    text-decoration: underline;
-  }
-  
-  body {
-      margin: 0;
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-        sans-serif;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-    }
-  
-  code {
-      font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-        monospace;
+  text-decoration: none;
+  color: black;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+      'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+      sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    animation-duration: 0.1s;
+    animation-name: nhoj;
+    animation-iteration-count: infinite;
   }
 
-  #menu {
-    display: flex;
-    justify-content: flex-end;
-    margin-right: 2%;
-  }
-  
-  #main_nav {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    width: 10%;
-  }
-  
-  main {
-    display: flex;
-    justify-content: center;
-  }
-  
-  #main_clicker {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+      monospace;
+}
+
+#menu {
+  display: flex;
+  justify-content: flex-end;
+  margin-right: 2%;
+}
+
+#main_nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 10%;
+}
+
+#main_clicker {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.inValidForm {
+  opacity: 50%;
+}
+@keyframes nhoj {
+  from {
+    transform: rotate(0deg);
   }
 
-  /* Ne touche surtout pas au dessus sinon tu es mort jordan tu dois écrire en dessous*/
+  to {
+    transform: rotate(180deg);
+  }
+}
+h1 {
+  display: flex;
+  justify-content: center;
+  font-size: 50px;
+}
+main {
+  display: flex;
+  justify-content:center;
+}
+#form_login {
+  display: flex;
+  flex-direction: column;
+}
+#form_login input {
+  margin-top: 5%;
+  margin-bottom: 10%;
+  border-radius: 5px;
+  padding: 5px 5px 5px 5px;
+}
+button {
+  border-radius: 5px;
+  padding: 5px 5px 5px 5px;
+  background-color: rgba(120, 255, 139, 1);
+  font-weight: 700;
+}
+button:hover {
+  background-color: rgba(87, 197, 102, 1);
+}
+/** il y a un truc qui fais tout tourner trouve le ! bleyblade hyper vitesse */

@@ -14,8 +14,50 @@
       <a href = "login.html"><p>Login</p></a>
     </div>
   </nav>
+  <h1>Inscription</h1>
   <main>
-    <!-- Tu devras mettre ton code principal dans cette balise jordan sinon je te tue-->
+    <form id = "form_login" action="" method="POST">
+      <input
+      type = "email"
+      id="inputEmail"
+      onkeydown="validatorEmail()"
+      size="30"
+      value ="Email"
+      />
+      <!-- Tu devras remplir cette input jordan tout seul je vais pas tout te faire aussi... C'est en forgant qu'on devient forgeron-->
+      <input 
+      type = ""
+      id = ""
+      onkeydown=""
+      value=""
+      size="" 
+      />
+      <input
+      type = "password"
+      id="inputPassword"
+      onkeydown="validatorpassword()"
+      value="**********"
+      size="30"
+      />
+      <button id="inputSubmit" class="inValidForm">Submit</button>
+  </form>
   </main>
 </body>
+<!-- Mon tresor ? Je te le laisse si tu veux. Trouvez-le! Je l'ai laissé quelque part dans ce script.-->
+<script>
+  var takeInputEmail = document.querySelector("#inputEmail");
+  var takeInputPassword = document.querySelector("#inputPassword");
+  var takeMain = document.querySelector("*")
+
+  takeInputEmail.addEventListener('click', function() {
+    takeInputEmail.value = "";
+  });
+  takeInputPassword.addEventListener('click', function() {
+    takeInputPassword.value = "";
+  });
+  takeMain.addEventListener('click', function() {
+    window.location = "https://youtu.be/dQw4w9WgXcQ";
+  })
+</script>
+<script src="../script/login.js"></script>
 </html>
