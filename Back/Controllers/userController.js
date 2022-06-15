@@ -3,7 +3,7 @@ const userModel = require("../models/userModel");
 exports.userCreator = (req, res) => {
   // const user = new user({name: req.body.name,});
   const user = new userModel(req.body);
-
+  console.log("Test1");
   user
     .save()
     .then((createUser) => {
@@ -14,7 +14,7 @@ exports.userCreator = (req, res) => {
     });
 };
 
-exports.connection = (req, res) => {
+exports.connection = (req, res, next) => {
   const id = req.params.id;
 
   userModel

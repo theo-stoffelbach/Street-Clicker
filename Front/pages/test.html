@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Test You don't have at Here !!!</title>
     <link rel="stylesheet" href="../style/login.css">
-</head>
+    <link rel="stylesheet" href="../style/test.css">
+    <!-- <script src="https://code.jquery.com/jquery-2.2.1.min.js"></script> -->
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+  </head>
 <body>
-    <form action="" method="POST">
+    <form action="#" method="POST" id="containerForm" onsubmit="return false">
         <input
         type="text"
         name="emailAdress"
@@ -23,7 +28,8 @@
         placeholder="Mettez votre mot de passe, s'il vous plait"
         onkeydown="validatorpassword()"
       />;
-        <input type="submit" value="Envoie des données" id="inputSubmit" class="inValidForm">
+        <button type="submit" id="inputSubmit" class="inValidForm" onclick="sendData()"> Envoie des données </button> 
+        <button type="submit" id="inputSubmit" class="inValidForm" onclick="test()"> Test </button> 
     </form>
 
 
