@@ -1,8 +1,9 @@
 console.log("JS Launched");
 
-const lifeText = document.querySelector(".life");
+const lifeBar = document.querySelector(".life");
 const clickerButton = document.querySelector("#btn_clicker");
 const scoreP = document.querySelector(".score");
+const goldText = document.querySelector("#gold_text");
 var totalLifeMonster = 2;
 var result = 0;
 var lifeMonster = 2;
@@ -16,7 +17,8 @@ function clicker() {
   }
   calculPercentage = Math.round((lifeMonster / totalLifeMonster) * 100) + "%";
   console.log(calculPercentage);
-  lifeText.style.width = calculPercentage;
+  lifeBar.style.width = calculPercentage;
+  gold();
 }
 
 clickerButton.addEventListener("click", function () {
@@ -37,5 +39,24 @@ function generatorMob(zone) {
     default:
       lifeMonster = random(1, 1);
       break;
+  }
+}
+
+/** function gold for buy in the shop **/
+function gold () {
+
+  var recoverWidth = window.getComputedStyle(lifeBar, null).getPropertyValue("width");
+  var index3 = recoverWidth.split("").slice(0, 3).join('');
+  var index2 = recoverWidth.split("").slice(0, 2).join('');
+  var index1 = recoverWidth.split("").slice(0, 1).join('');
+
+  if (recoverWidth.length == 5) {
+    console.log(index3)
+  }
+  if (recoverWidth.length == 4){
+    console.log(index2);
+  }
+  if (recoverWidth.length == 3) {
+    console.log(index1);
   }
 }
