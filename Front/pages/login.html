@@ -28,26 +28,28 @@
       type = "password"
       id="inputPassword"
       onkeydown="validatorpassword()"
-
-    />;
-      <button id="inputSubmit" class="inValidForm">
+      value = "**********"
+      size="30"
+      />
+      <button id="inputSubmit" class="inValidForm">Submit</button>
   </form>
   </main>
+  <footer>
+    <div id = "footer_copyright">
+      <p>
+        <span>@ <script>document.write(new Date().getFullYear());</script></span> 
+        Street Cliker <span>. Tous Droits Réservés.</span>
+      </p>
+  </div>
+  </footer>
 </body>
 <script src="../script/login.js"></script>
 <script>
-  var takeInputEmail = document.querySelector("#inputEmail");
-  var takeInputPassword = document.querySelector("#inputPassword");
-  var takeMain = document.querySelector("*")
+  const takeInputEmail = document.querySelector("#inputEmail");
+  const takeInputPassword = document.querySelector("#inputPassword");
 
-  takeInputEmail.addEventListener('click', function() {
-    takeInputEmail.value = "";
-  });
-  takeInputPassword.addEventListener('click', function() {
-    takeInputPassword.value = "";
-  });
-  takeMain.addEventListener('click', function() {
-    window.location = "https://youtu.be/yF31p2MaKgo?t=25"
-  })
+  takeInputEmail.addEventListener('click', function() { takeInputEmail.value = ""; });
+  takeInputPassword.addEventListener('click', function() { takeInputPassword.value = ""; });
 </script>
+<script src="../script/login.js"></script>
 </html>
