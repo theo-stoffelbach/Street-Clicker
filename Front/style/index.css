@@ -36,7 +36,35 @@ code {
   justify-content: space-between;
   width: 10%;
 }
-
+#side_nav {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  height: 100%;
+  width: 15%;
+  background: black;
+}
+.top_side_nav {
+  display: flex;
+  justify-content: end;
+  color: blanchedalmond;
+  font-size: 30px;
+  border: white 2px solid;
+}
+.top_side_nav img {
+  width: 15%;
+}
+.main_side_nav {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 100%;
+  color: blanchedalmond;
+}
+.main_side_nav img {
+  margin-top: 50px;
+  width: 40%;
+}
 main {
   display: flex;
   justify-content: center;

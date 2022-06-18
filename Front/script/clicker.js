@@ -8,17 +8,21 @@ var totalLifeMonster = 2;
 var result = 0;
 var lifeMonster = 2;
 var calculPercentage = 0;
+var gold = 0;
+
+goldText.innerHTML = "0";
+scoreP.innerHTML = "0";
 
 function clicker() {
   lifeMonster--;
   result++;
   if (lifeMonster <= 0) {
     generatorMob(1);
+    getGold();
   }
   calculPercentage = Math.round((lifeMonster / totalLifeMonster) * 100) + "%";
   console.log(calculPercentage);
   lifeBar.style.width = calculPercentage;
-  gold();
 }
 
 clickerButton.addEventListener("click", function () {
@@ -43,20 +47,13 @@ function generatorMob(zone) {
 }
 
 /** function gold for buy in the shop **/
-function gold () {
+function getGold () {
+  let stockRandom = random(10, 100);
+  gold += stockRandom + stockRandom;
+  goldText.innerHTML = gold;
+}
 
-  var recoverWidth = window.getComputedStyle(lifeBar, null).getPropertyValue("width");
-  var index3 = recoverWidth.split("").slice(0, 3).join('');
-  var index2 = recoverWidth.split("").slice(0, 2).join('');
-  var index1 = recoverWidth.split("").slice(0, 1).join('');
+/** Function for buy Bonus in the shop **/
+function buyBonus () {
 
-  if (recoverWidth.length == 5) {
-    console.log(index3)
-  }
-  if (recoverWidth.length == 4){
-    console.log(index2);
-  }
-  if (recoverWidth.length == 3) {
-    console.log(index1);
-  }
 }
