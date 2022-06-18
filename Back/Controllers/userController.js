@@ -38,15 +38,22 @@ exports.userCreator = (req, res) => {
     password_input = password_input.toString();
     return password_input;
   };
+};
 
-  userData.password = encryption(password);
+exports.test = (req, res) => {
+  // let userData = new userModel(req.body);
 
-  console.log("\n\nstatus : " + userData.status + "\n\n");
+  const email = req.body.email;
+  console.log("La fonction appeller est test");
 
-  userData
-    .save()
-    .then((createUser) => {
-      return res.status(201).json(createUser);
+  userModel
+    .findOne({ email: email })
+    .then((user) => {
+      if (user === null) {
+        console.log("C'est bon il peut créer un compte");
+        res.status(400).json("Il y a une erreure");
+      }
+      return res.status(200).json(user);
     })
     .catch((err) => {
       return res.status(400).json(err);
