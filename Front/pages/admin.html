@@ -15,53 +15,62 @@
 
   </head>
 <body>
+  <header>
     <h1> Inscription - Admin </h1>
-<main>
+  </header>
+  <main>
     <form action="#" method="POST" id="containerForm" onsubmit="return false">
-        <input
-        type="text"
-        name="Pseudo"
-        id="inputPseudo"
-        placeholder="Mettez votre pseudo"
-        onkeydown="validatorpseudo()"
+      <input
+      type="text"
+      name="Pseudo"
+      id="inputPseudo"
+      placeholder="Mettez votre pseudo"
+      onkeydown="validatorpseudo()"
       />
-        <input
-        type="text"
-        name="emailAdress"
-        id="inputEmail"
-        placeholder="Mettez votre adress mail"
-        onkeydown="validatorEmail()"
+      <input
+      type="text"
+      name="emailAdress"
+      id="inputEmail"
+      placeholder="Mettez votre adress mail"
+      onkeydown="validatorEmail()"
       />
-        <input
-        type="text"
-        name="password"
-        id="inputPassword"
-        placeholder="Mettez votre mot de passe"
-        onkeydown="validatorpassword()"
+      <input
+      type="text"
+      name="password"
+      id="inputPassword"
+      placeholder="Mettez votre mot de passe"
+      onkeydown="validatorpassword()"
       />
-        <input
-        type="text"
-        name="color"
-        id="inputColor"
-        placeholder="Mettez la couleur / hexa de votre Pseudo Admin "
+      <input
+      type="text"
+      name="color"
+      id="inputColor"
+      placeholder="Mettez la couleur / hexa de votre Pseudo Admin "
       />
       <div id="jordanCheck">
-        <input
-        type="checkbox"
-        name="jordan"
-        id="inputJordan"
-        placeholder="Are you Jordan  ?"
-        onclick="Jordan()"
+      <input
+      type="checkbox"
+      name="jordan"
+      id="inputJordan"
+      placeholder="Are you Jordan  ?"
+      onclick="Jordan()"
       />
       <label for="jordan"> Are you Jordan ?</label>
-    </div>
-        <button type="submit" id="inputSubmit" class="inValidForm" onclick="sendData()"> Envoie des données </button> 
-        <!-- <button type="submit" id="inputSubmit" class="inValidForm" onclick="test()"> Test </button>  -->
-    </form>
-
-    <button type="submit" id="inputSubmit" onclick="sendTest()"> Envoie des données </button> 
-
-    <script src="../script/testScriptTheo.js"></script>
+      </div>
+      <button type="submit" id="inputSubmit" class="inValidForm" onclick="sendData()"> Envoie des données </button> 
+      <!-- <button type="submit" id="inputSubmit" class="inValidForm" onclick="test()"> Test </button>  -->
+      <button type="submit" id="inputSubmit" onclick="sendTest()"> Envoie des données </button> 
+      </form>      
+      
+      <script src="../script/testScriptTheo.js"></script>
   </main>
+  <footer>
+    <div id = "footer_copyright">
+      <p>
+        <span>@ <script>document.write(new Date().getFullYear());</script></span> 
+        Street Cliker <span>. Tous Droits Réservés.</span>
+      </p>
+  </div>
+  </footer>
 </body>
 </html>
