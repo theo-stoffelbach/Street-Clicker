@@ -4,6 +4,29 @@ var crypt = {
   secret: `+j&l$?/t{/8?xZk:E~<}&%w>&yT%I!gg&/SVe,;=aqT4&<y?}c#CWrXbEsc!t=xg|T(dNsU".$V)+h$0XzC0=z/Ye$Ap+%>cn,W`,
 };
 
+const encryption = (password) => {
+  var password_input = CryptoJS.AES.encrypt(password, crypt.secret);
+  password_input = password_input.toString();
+  return password_input;
+};
+
+const decryptage = (password_user) => {
+  password_user = CryptoJS.AES.decrypt(password_user, crypt.secret);
+  password_user = password_user.toString(CryptoJS.enc.Utf8);
+  return password_user;
+};
+
+const CreateAccount = (userData) => {
+  userData
+    .save()
+    .then((createUser) => {
+      return createUser;
+    })
+    .catch((err) => {
+      return err;
+    });
+};
+
 exports.Testpost = (req, res) => {
   // const user = new user({name: req.body.name,});
   const user = new userModel(req.body);
@@ -41,24 +64,73 @@ exports.userCreator = (req, res) => {
 };
 
 exports.test = (req, res) => {
-  // let userData = new userModel(req.body);
+  // Le test pour créer le register pour admin
+  let userData = new userModel(req.body);
 
-  const email = req.body.email;
-  console.log("La fonction appeller est test");
+  userData.password = encryption(userData.password);
+
+  // console.log("La fonction appeller est test - ");
 
   userModel
-    .findOne({ email: email })
+    .findOne({ email: userData.email })
     .then((user) => {
       if (user === null) {
-        console.log("C'est bon il peut créer un compte");
-        res.status(400).json("Il y a une erreure");
+        CreateAccount(userData);
+        return res.status(200).json("Le compte à était créer avec succées");
       }
-      return res.status(200).json(user);
+      return res
+        .status(500)
+        .json("Il existe déjà un compte avec cette adress mail");
     })
     .catch((err) => {
-      return res.status(400).json(err);
+      // Ici l'adress est déja verif plus qu'a creer le compte
+
+      // CreateAccount(userData);
+
+      return res
+        .status(500)
+        .json(
+          "OUF CA BUG TRUC DE OUF mais dit a théo le code d'erreur : THEO-001"
+        );
     });
 };
+
+if (color == "aqua") color = "#00FFFF";
+else if (color == "black") color = "#00000";
+else if (color == "blue") color = "#0000FF";
+else if (color == "fuchsia") color = "#FF00FF";
+else if (color == "gray") color = "#808080";
+else if (color == "green") color = "#008000";
+else if (color == "lime") color = "#00FF00";
+else if (color == "maroon") color = "#000080";
+else if (color == "navy") color = "#000080";
+else if (color == "olive") color = "#808000";
+else if (color == "purple") color = "#800080";
+else if (color == "red") color = "#FF0000";
+else if (color == "silver") color = "#C0C0C0";
+else if (color == "teal") color = "#008080";
+else if (color == "white") color = "#FFFFFF";
+else if (color == "yellow") color = "#FFFF00";
+else erreur = "Ca n'existe pas elle ne vigur pas dans la liste des couleurs : ";
+
+let color = [
+  "aqua",
+  "black",
+  "blue",
+  "fuchsia",
+  "gray",
+  "green",
+  "lime",
+  "maroon",
+  "navy",
+  "olive",
+  "purple",
+  "red",
+  "silver",
+  "teal",
+  "white",
+  "yellow",
+];
 
 exports.connection = (req, res, next) => {
   const id = req.params.id;
@@ -131,12 +203,6 @@ exports.login = (req, res) => {
   const email = user.email;
   const password = user.password;
   // const merde2 = password;
-
-  const decryptage = (password_user) => {
-    password_user = CryptoJS.AES.decrypt(password_user, crypt.secret);
-    password_user = password_user.toString(CryptoJS.enc.Utf8);
-    return password_user;
-  };
 
   userModel
     .findOne({ email: email })

@@ -1,3 +1,6 @@
+//   192.168.1.31 à Lourdes
+//   192.168.1.45 à Toulouse
+
 var emailValidForm,
   passwordValidForm,
   pseudoValidForm,
@@ -147,12 +150,24 @@ function test() {
 }
 
 function sendTest() {
-  console.log("Test");
+  let inputEmailValue = document.getElementById("inputEmail").value;
+  let inputPasswordValue = document.getElementById("inputPassword").value;
+  let inputPseudoValue = document.getElementById("inputPseudo").value;
+  let inputColorValue = document.getElementById("inputColor").value;
+  let statusInput = document.getElementById("inputJordan").checked;
 
+  if (statusInput) statusInput = "Jordan";
+  else statusInput = "Admin";
+
+  console.log("Test");
   axios
-    .post("http://localhost/api/user/test", {
-      email: "jordanpalacios8887@gmail.commm",
+    .post("http://localhost:1337/api/user/test", {
+      pseudo: inputPseudoValue,
+      email: inputEmailValue,
+      password: inputPasswordValue,
+      status: statusInput,
+      colorAdmin: inputColorValue,
     })
     .then((res) => console.log(res))
-    .catch((err) => console.log(err));
+    .catch((err) => console.log(err.response.data));
 }
