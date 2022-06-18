@@ -10,7 +10,6 @@ console.log(
 function validatorEmail() {
   let inputEmail = document.getElementById("inputEmail");
   let inputEmailValue = document.getElementById("inputEmail").value;
-  // let inputEmailValue = document.getElementById("inputEmail").value;
 
   let paternEmail = /^[^ ]+@+[^ ]+\.[a-z]{2,10}$/;
 
@@ -62,10 +61,6 @@ function validatorpseudo() {
 function validatorForm() {
   let inputForm = document.getElementById("inputSubmit");
 
-  console.log(
-    passwordValidForm + "  " + emailValidForm + "  " + pseudoValidForm
-  );
-
   if (passwordValidForm == 1 && emailValidForm == 1 && pseudoValidForm == 1) {
     inputForm.classList.add("validForm");
     inputForm.classList.remove("inValidForm");
@@ -75,18 +70,13 @@ function validatorForm() {
   }
 }
 
-function Jordan() {
-  let inputJordanValue = document.getElementById("inputJordan");
-
-  console.log(inputJordanValue.checked);
-}
-
 function sendData() {
   let inputEmailValue = document.getElementById("inputEmail").value;
   let inputPasswordValue = document.getElementById("inputPassword").value;
   let inputPseudoValue = document.getElementById("inputPseudo").value;
   let inputColorValue = document.getElementById("inputColor").value;
   let inputJordanValue = document.getElementById("inputJordan").checked;
+  var response = "";
 
   validatorForm();
   validatorpseudo();
@@ -102,7 +92,7 @@ function sendData() {
 
     sendData = JSON.stringify(sendData);
 
-    console.log("`n Voici jordan : " + inputJordanValue);
+    console.log("Voici jordan : " + inputJordanValue);
 
     if (inputJordanValue == true) {
       axios
@@ -113,7 +103,10 @@ function sendData() {
           colorAdmin: inputColorValue,
           jordan: "true",
         })
-        .then((res) => console.log(res));
+        .then((res) => {
+          response = res;
+          console.log(res);
+        });
     } else {
       axios
         .post("http://localhost:1337/api/user/create/user", {
@@ -122,8 +115,13 @@ function sendData() {
           pseudo: inputPseudoValue,
           colorAdmin: inputColorValue,
         })
-        .then((res) => console.log(res));
+        .then((res) => {
+          response = res;
+          console.log(res);
+        });
     }
+
+    console.log("\n\n\n" + response);
 
     // 192.168.1.45
   } else {
@@ -132,8 +130,6 @@ function sendData() {
 }
 
 function test() {
-  console.log("halo");
-
   // axios
   //   .get("http://192.168.1.45:1337/api/user/a")
   //   .then((response) => console.log(response))
@@ -148,6 +144,15 @@ function test() {
       email: "couille@gmail.org",
     })
     .then((res) => console.log(res));
+}
 
-  console.log("E,d");
+function sendTest() {
+  console.log("Test");
+
+  axios
+    .post("http://localhost/api/user/test", {
+      email: "jordanpalacios8887@gmail.commm",
+    })
+    .then((res) => console.log(res))
+    .catch((err) => console.log(err));
 }
