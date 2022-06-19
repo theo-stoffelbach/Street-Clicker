@@ -15,16 +15,24 @@ var gold = 0;
 goldText.innerHTML = "0";
 scoreP.innerHTML = "0";
 
-function clicker() {
-  lifeMonster--;
-  result++;
+const actuCalculPercentageBar = () => {
+  calculPercentage = Math.round((lifeMonster / totalLifeMonster) * 100) + "%";
+  console.log(calculPercentage);
+  lifeBar.style.width = calculPercentage;
+};
+
+function dommageToEnemies(Damage = 1) {
+  lifeMonster -= Damage;
+  result += Damage;
+
   if (lifeMonster <= 0) {
     generatorMob(1);
     getGold();
   }
-  calculPercentage = Math.round((lifeMonster / totalLifeMonster) * 100) + "%";
-  console.log(calculPercentage);
-  lifeBar.style.width = calculPercentage;
+}
+function clicker() {
+  dommageToEnemies(1);
+  actuCalculPercentageBar();
 }
 
 clickerButton.addEventListener("click", function () {
@@ -49,31 +57,36 @@ function generatorMob(zone) {
 }
 
 /** function gold for buy in the shop **/
-function getGold () {
+function getGold() {
   let stockRandom = random(10, 100);
   gold += stockRandom;
   goldText.innerHTML = gold;
 }
 
 /** Function for buy Bonus in the shop **/
-bonusAddAttack.addEventListener("click", function() {
+bonusAddAttack.addEventListener("click", function () {
   let priceBonus = 100;
   if (gold < priceBonus) {
     alert("No enought price is " + priceBonus + " and you have " + gold);
   }
   if (gold > priceBonus) {
-   lifeMonster -= 50;
-   console.log(lifeMonster);
+    lifeMonster -= 50;
+    console.log(lifeMonster);
   }
 });
-bonusDuringDgt.addEventListener("click", function() {
+
+bonusDuringDgt.addEventListener("click", function () {
   let priceBonus = 0;
-  let x = setInterval(function() { lifeMonster--; }, 1000);
+  let x = setInterval(function () {
+    dommageToEnemies(1);
+    actuCalculPercentageBar();
+  }, 1000);
 
   if (gold < priceBonus) {
-    alert("No enought price is " + priceBonus + " and you have " + gold);  
+    alert("No enought price is " + priceBonus + " and you have " + gold);
   }
-  if (gold >= priceBonus) { //https://forums.jeuxonline.info/sujet/981883/js-repeter-la-meme-action-toutes-les-x-secondes
+  if (gold >= priceBonus) {
+    //https://forums.jeuxonline.info/sujet/981883/js-repeter-la-meme-action-toutes-les-x-secondes
     return x;
   }
-}); 
+});

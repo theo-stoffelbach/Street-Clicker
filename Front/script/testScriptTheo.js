@@ -1,6 +1,45 @@
 //   192.168.1.31 à Lourdes
 //   192.168.1.45 à Toulouse
 
+let VerificatorColor = [
+  "aqua",
+  "black",
+  "blue",
+  "fuchsia",
+  "gray",
+  "green",
+  "lime",
+  "maroon",
+  "navy",
+  "olive",
+  "purple",
+  "red",
+  "silver",
+  "teal",
+  "white",
+  "yellow",
+];
+
+const TranslatorColor = {
+  Couleur: [
+    { black: "#00000" },
+    { blue: "#0000FF" },
+    { fuchsia: "#FF00FF" },
+    { gray: "#808080" },
+    { green: "#008000" },
+    { lime: "#00FF00" },
+    { maroon: "#000080" },
+    { navy: "#000080" },
+    { olive: "#808000" },
+    { purple: "#800080" },
+    { red: "#FF0000" },
+    { silver: "#C0C0C0" },
+    { teal: "#008080" },
+    { white: "#FFFFFF" },
+    { yellow: "#FFFF00" },
+  ],
+};
+
 var emailValidForm,
   passwordValidForm,
   pseudoValidForm,
@@ -149,6 +188,10 @@ function test() {
     .then((res) => console.log(res));
 }
 
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+// ---------------------------------------------------------
+
 function sendTest() {
   let inputEmailValue = document.getElementById("inputEmail").value;
   let inputPasswordValue = document.getElementById("inputPassword").value;
@@ -165,8 +208,8 @@ function sendTest() {
       pseudo: inputPseudoValue,
       email: inputEmailValue,
       password: inputPasswordValue,
-      status: statusInput,
       colorAdmin: inputColorValue,
+      status: statusInput,
     })
     .then((res) => console.log(res))
     .catch((err) => console.log(err.response.data));

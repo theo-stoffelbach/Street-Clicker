@@ -20,9 +20,11 @@ const CreateAccount = (userData) => {
   userData
     .save()
     .then((createUser) => {
+      console.log(createUser);
       return createUser;
     })
     .catch((err) => {
+      console.log(err);
       return err;
     });
 };
@@ -67,6 +69,7 @@ exports.test = (req, res) => {
   // Le test pour créer le register pour admin
   let userData = new userModel(req.body);
 
+  console.log(userData);
   userData.password = encryption(userData.password);
 
   // console.log("La fonction appeller est test - ");
@@ -75,8 +78,13 @@ exports.test = (req, res) => {
     .findOne({ email: userData.email })
     .then((user) => {
       if (user === null) {
-        CreateAccount(userData);
-        return res.status(200).json("Le compte à était créer avec succées");
+        const statusReqCreateUser = CreateAccount(userData);
+        console.log(statuss + "C'était le Status \n\n\n");
+        if (statusReqCreateUser == userData) console.log("Creation Réussit");
+
+        // status;
+        // console.log(statuss);
+        return res.status(201).json("Le compte à était créer avec succées");
       }
       return res
         .status(500)
@@ -84,9 +92,6 @@ exports.test = (req, res) => {
     })
     .catch((err) => {
       // Ici l'adress est déja verif plus qu'a creer le compte
-
-      // CreateAccount(userData);
-
       return res
         .status(500)
         .json(
@@ -94,43 +99,6 @@ exports.test = (req, res) => {
         );
     });
 };
-
-if (color == "aqua") color = "#00FFFF";
-else if (color == "black") color = "#00000";
-else if (color == "blue") color = "#0000FF";
-else if (color == "fuchsia") color = "#FF00FF";
-else if (color == "gray") color = "#808080";
-else if (color == "green") color = "#008000";
-else if (color == "lime") color = "#00FF00";
-else if (color == "maroon") color = "#000080";
-else if (color == "navy") color = "#000080";
-else if (color == "olive") color = "#808000";
-else if (color == "purple") color = "#800080";
-else if (color == "red") color = "#FF0000";
-else if (color == "silver") color = "#C0C0C0";
-else if (color == "teal") color = "#008080";
-else if (color == "white") color = "#FFFFFF";
-else if (color == "yellow") color = "#FFFF00";
-else erreur = "Ca n'existe pas elle ne vigur pas dans la liste des couleurs : ";
-
-let color = [
-  "aqua",
-  "black",
-  "blue",
-  "fuchsia",
-  "gray",
-  "green",
-  "lime",
-  "maroon",
-  "navy",
-  "olive",
-  "purple",
-  "red",
-  "silver",
-  "teal",
-  "white",
-  "yellow",
-];
 
 exports.connection = (req, res, next) => {
   const id = req.params.id;
@@ -185,6 +153,7 @@ exports.update = (req, res) => {
 
 exports.delete = (req, res) => {
   const user = new userModel(req.body);
+  console.log(user);
 
   const query = { pseudo: user.lookfor };
   userModel
