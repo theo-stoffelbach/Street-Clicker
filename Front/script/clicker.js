@@ -21,18 +21,19 @@ const actuCalculPercentageBar = () => {
   lifeBar.style.width = calculPercentage;
 };
 
-function dommageToEnemies(Damage = 1) {
+function damageToEnemies(Damage = 1) {
   lifeMonster -= Damage;
-  result += Damage;
 
   if (lifeMonster <= 0) {
     generatorMob(1);
     getGold();
   }
+  actuCalculPercentageBar();
+
 }
 function clicker() {
-  dommageToEnemies(1);
-  actuCalculPercentageBar();
+  damageToEnemies(1);
+  result++;
 }
 
 clickerButton.addEventListener("click", function () {
@@ -65,28 +66,29 @@ function getGold() {
 
 /** Function for buy Bonus in the shop **/
 bonusAddAttack.addEventListener("click", function () {
-  let priceBonus = 100;
+  let priceBonus = 1000;
   if (gold < priceBonus) {
     alert("No enought price is " + priceBonus + " and you have " + gold);
   }
-  if (gold > priceBonus) {
-    lifeMonster -= 50;
-    console.log(lifeMonster);
+  if (gold >= priceBonus) {
+    damageToEnemies(10);
+    gold -= 1000;
+    goldText.innerHTML = gold;
   }
 });
 
 bonusDuringDgt.addEventListener("click", function () {
-  let priceBonus = 0;
+  let priceBonus = 500;
   let x = setInterval(function () {
-    dommageToEnemies(1);
-    actuCalculPercentageBar();
+    damageToEnemies(1);
   }, 1000);
 
   if (gold < priceBonus) {
     alert("No enought price is " + priceBonus + " and you have " + gold);
   }
   if (gold >= priceBonus) {
-    //https://forums.jeuxonline.info/sujet/981883/js-repeter-la-meme-action-toutes-les-x-secondes
+    gold -= 500;
+    goldText.innerHTML = gold;
     return x;
   }
 });
