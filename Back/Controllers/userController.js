@@ -67,36 +67,88 @@ exports.userCreator = (req, res) => {
 
 exports.test = (req, res) => {
   // Le test pour créer le register pour admin
-  let userData = new userModel(req.body);
+  var userData = new userModel(req.body);
 
-  console.log(userData);
-  userData.password = encryption(userData.password);
+  console.log(userData.pseudo);
 
-  // console.log("La fonction appeller est test - ");
+  console.log("La fonction appeller est test - ");
 
   userModel
-    .findOne({ email: userData.email })
+    .findOne({ pseudo: userData.pseudo })
     .then((user) => {
-      if (user === null) {
-        const statusReqCreateUser = CreateAccount(userData);
-        console.log(statuss + "C'était le Status \n\n\n");
-        if (statusReqCreateUser == userData) console.log("Creation Réussit");
+      if (user.pseudo === userData.pseudo) {
+        console.log(
+          `Ton Pseudo est déjà Use : ${user.pseudo} et ${userData.pseudo}`
+        );
+        return res
+          .status(500)
+          .json("Et non déja un User avec le meme Pseudo pas de chance");
+      } else {
+        console.log(
+          `Ton Pseudo est déjà Use : ${user.pseudo} et ${userData.pseudo}`
+        );
+        userModel
+          .findOne({ email: userData.email })
+          .then((user) => {
+            if (user === null) {
+              userData.password = encryption(userData.password);
 
-        // status;
-        // console.log(statuss);
-        return res.status(201).json("Le compte à était créer avec succées");
+              const statusReqCreateUser = CreateAccount(userData);
+              if (statusReqCreateUser == userData)
+                console.log("Creation Réussit");
+
+              return res
+                .status(201)
+                .json("Le compte à était créer avec succées");
+            }
+
+            return res
+              .status(500)
+              .json("Il existe déjà un compte avec cette adress mail");
+          })
+          .catch((err) => {
+            userData.password = encryption(userData.password);
+
+            console.log(err);
+            // Ici l'adress est déja verif plus qu'a creer le compte
+            return res
+              .status(500)
+              .json(
+                "OUF CA BUG TRUC DE OUF mais dit a théo le code d'erreur : THEO-001 - mais ca marche :/"
+              );
+          });
       }
-      return res
-        .status(500)
-        .json("Il existe déjà un compte avec cette adress mail");
     })
     .catch((err) => {
-      // Ici l'adress est déja verif plus qu'a creer le compte
-      return res
-        .status(500)
-        .json(
-          "OUF CA BUG TRUC DE OUF mais dit a théo le code d'erreur : THEO-001"
-        );
+      console.log(`Ton Pseudo n'est pas Use : et ${userData.pseudo}`);
+      userModel
+        .findOne({ email: userData.email })
+        .then((user) => {
+          if (user === null) {
+            userData.password = encryption(userData.password);
+
+            const statusReqCreateUser = CreateAccount(userData);
+            if (statusReqCreateUser == userData)
+              console.log("Creation Réussit");
+
+            return res.status(201).json("Le compte à était créer avec succées");
+          }
+
+          return res
+            .status(500)
+            .json("Il existe déjà un compte avec cette adress mail");
+        })
+        .catch((err) => {
+          userData.password = encryption(userData.password);
+
+          console.log(err);
+          // Ici l'adress est déja verif plus qu'a creer le compte
+          return res
+            .status(500)
+            .json(
+              "OUF CA BUG TRUC DE OUF mais dit a théo le code d'erreur : THEO-001 - mais ca marche :/"
+            );
+        });
     });
 };
 
@@ -112,18 +164,6 @@ exports.connection = (req, res, next) => {
       return res.status(400).json(err);
     });
 };
-
-// const res = await Person.replaceOne({ _id: 24601 }, { name: 'Jean Valjean' });
-
-// PostModel.findByIdAndUpdate(
-//   req.params.id,
-//   { $set: updatedRecord },
-//   { new: true },
-//   (err, docs) => {
-//     if (!err) res.send(docs);
-//     else console.log("Update error : " + err);
-//   }
-// );
 
 exports.getAll = (req, res) => {
   userModel
