@@ -8,8 +8,8 @@ a:hover {
 button  {
   border: green 3px solid;
   border-radius: 4px;
-  width: 15%;
-  height: 15%;
+  width: 5%;
+  height: 40%;
 }
 button:hover {
   background-color: whitesmoke;
@@ -38,7 +38,11 @@ code {
   justify-content: flex-end;
   margin-right: 2%;
 }
-
+header {
+  display: flex;
+  justify-content: center;
+  color: black;
+}
 #main_nav {
   display: flex;
   flex-direction: row;
@@ -75,7 +79,8 @@ code {
 }
 main {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-items: center;
 }
 
 #main_clicker {
