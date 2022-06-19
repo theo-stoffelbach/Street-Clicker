@@ -4,6 +4,8 @@ const lifeBar = document.querySelector(".life");
 const clickerButton = document.querySelector("#btn_clicker");
 const scoreP = document.querySelector(".score");
 const goldText = document.querySelector("#gold_text");
+const bonusAddAttack = document.querySelector(".one_bonus");
+const bonusDuringDgt = document.querySelector(".two_bonus");
 var totalLifeMonster = 2;
 var result = 0;
 var lifeMonster = 2;
@@ -49,11 +51,29 @@ function generatorMob(zone) {
 /** function gold for buy in the shop **/
 function getGold () {
   let stockRandom = random(10, 100);
-  gold += stockRandom + stockRandom;
+  gold += stockRandom;
   goldText.innerHTML = gold;
 }
 
 /** Function for buy Bonus in the shop **/
-function buyBonus () {
+bonusAddAttack.addEventListener("click", function() {
+  let priceBonus = 100;
+  if (gold < priceBonus) {
+    alert("No enought price is " + priceBonus + " and you have " + gold);
+  }
+  if (gold > priceBonus) {
+   lifeMonster -= 50;
+   console.log(lifeMonster);
+  }
+});
+bonusDuringDgt.addEventListener("click", function() {
+  let priceBonus = 0;
+  let x = setInterval(function() { lifeMonster--; }, 1000);
 
-}
+  if (gold < priceBonus) {
+    alert("No enought price is " + priceBonus + " and you have " + gold);  
+  }
+  if (gold >= priceBonus) { //https://forums.jeuxonline.info/sujet/981883/js-repeter-la-meme-action-toutes-les-x-secondes
+    return x;
+  }
+}); 
