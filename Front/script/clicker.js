@@ -67,13 +67,13 @@ function getGold() {
 /** Function for buy Bonus in the shop **/
 bonusAddAttack.addEventListener("click", function () {
   let priceBonus = 1000;
-  if (gold < priceBonus) {
-    alert("No enought price is " + priceBonus + " and you have " + gold);
-  }
+
   if (gold >= priceBonus) {
     damageToEnemies(10);
     gold -= 1000;
     goldText.innerHTML = gold;
+  } else {
+    alert("No enought price is " + priceBonus + " and you have " + gold);
   }
 });
 
