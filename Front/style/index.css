@@ -72,7 +72,6 @@ code {
 }
 .main_side_nav img {
   margin-top: 10px;
-  width: 40%;
 }
 main {
   display: flex;
@@ -109,4 +108,13 @@ footer {
 }
 #footer_copyright p span {
   opacity: 50%;
+}
+.two_bonus {
+  width: 40%;
+}
+.one_bonus {
+  width: 40%;
+}
+.three_bonus {
+  width: 40%;
 }
