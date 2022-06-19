@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="../style/register.css">
     <title>Street Clicker</title>
 </head>
-<body scroll="no" style="overflow: hidden">
+<body>
   <nav id = "menu">
     <div id = "main_nav">
       <a href = "index.html"><p>Home</p></a>
@@ -16,7 +16,7 @@
   </nav>
   <h1>Inscription</h1>
   <main>
-    <form id = "form_login" action="" method="POST">
+    <form id = "form_login" method="POST">
       <input
       type = "email"
       id="inputEmail"
@@ -56,17 +56,17 @@
       </p>
   </div>
   </footer>
+  <script>
+    const takeInputEmail = document.querySelector("#inputEmail");
+    const takeInputPassword = document.querySelector("#inputPassword");
+    const takeInputConfirmEmail = document.querySelector("#inputConfirmEmail");
+    const takeInputConfirmPassword = document.querySelector("#inputConfirmPassword");
+    
+    takeInputEmail.addEventListener('click', function() { takeInputEmail.value = ""; });
+    takeInputPassword.addEventListener('click', function() { takeInputPassword.value = ""; });
+    takeInputConfirmEmail.addEventListener('click', function() { takeInputConfirmEmail.value = ""; });
+    takeInputConfirmPassword.addEventListener('click', function() { takeInputConfirmPassword.value = ""; });
+  </script>
+  <script src="../script/login.js"></script>
 </body>
-<script>
-  const takeInputEmail = document.querySelector("#inputEmail");
-  const takeInputPassword = document.querySelector("#inputPassword");
-  const takeInputConfirmEmail = document.querySelector("#inputConfirmEmail");
-  const takeInputConfirmPassword = document.querySelector("#inputConfirmPassword");
-  
-  takeInputEmail.addEventListener('click', function() { takeInputEmail.value = ""; });
-  takeInputPassword.addEventListener('click', function() { takeInputPassword.value = ""; });
-  takeInputConfirmEmail.addEventListener('click', function() { takeInputConfirmEmail.value = ""; });
-  takeInputConfirmPassword.addEventListener('click', function() { takeInputConfirmPassword.value = ""; });
-</script>
-<script src="../script/login.js"></script>
 </html>
