@@ -4,7 +4,7 @@ const lifeBar = document.querySelector(".life");
 const clickerButton = document.querySelector("#btn_clicker");
 const scoreP = document.querySelector(".score");
 const goldText = document.querySelector("#gold_text");
-const bonusAddAttack = document.querySelector(".one_bonus");
+const bonusExplosiveDgt = document.querySelector(".one_bonus");
 const bonusDuringDgt = document.querySelector(".two_bonus");
 var totalLifeMonster = 2;
 var result = 0;
@@ -65,7 +65,7 @@ function getGold() {
 }
 
 /** Function for buy Bonus in the shop **/
-bonusAddAttack.addEventListener("click", function () {
+bonusExplosiveDgt.addEventListener("click", function () {
   let priceBonus = 1000;
 
   if (gold >= priceBonus) {
@@ -79,16 +79,13 @@ bonusAddAttack.addEventListener("click", function () {
 
 bonusDuringDgt.addEventListener("click", function () {
   let priceBonus = 500;
-  let x = setInterval(function () {
-    damageToEnemies(1);
-  }, 1000);
 
-  if (gold < priceBonus) {
-    alert("No enought price is " + priceBonus + " and you have " + gold);
-  }
   if (gold >= priceBonus) {
+    setInterval(function () { damageToEnemies(1); }, 1000);
     gold -= 500;
     goldText.innerHTML = gold;
-    return x;
+  } else {
+    alert("No enought price is " + priceBonus + " and you have " + gold);
+    return 0;
   }
 });
