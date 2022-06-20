@@ -27,6 +27,9 @@ body {
   'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url("../asset/map_2.jpg");
+  background-repeat: no-repeat;
+  background-position: top 50px right -50px;
   }
 
 code {
@@ -123,4 +126,9 @@ footer {
 }
 .three_bonus {
   width: 40%;
+}
+.hadouken  {
+  position: absolute;
+  bottom: 10px;
+  left: 450px;
 }
