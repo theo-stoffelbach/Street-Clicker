@@ -43,12 +43,14 @@
   <img src = "../asset/hadouken.gif" alt = "hadouken" class = "hadouken">
   <footer>
     <div id = "footer_copyright">
-      <p>
-        <span>@ <script>document.write(new Date().getFullYear());</script></span> 
-        Street Cliker <span>. Tous Droits Réservés.</span>
+      <p> <span>@ ‎ <p class = "getFullYear"></p></span> ‎ Street Cliker <span>. Tous Droits Réservés.</span>
       </p>
   </div>
   </footer>
   <script src = "../script/clicker.js"></script>
+  <script>
+    const fullYear = document.querySelector(".getFullYear");
+    fullYear.innerHTML = new Date().getFullYear();
+  </script>
 </body>
 </html>
