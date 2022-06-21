@@ -63,11 +63,14 @@
   </main>
   <footer>
     <div id = "footer_copyright">
-      <p>
-        <span>@ <script>document.write(new Date().getFullYear());</script></span> 
-        Street Cliker <span>. Tous Droits Réservés.</span>
-      </p>
+      <p><span>@</span></p>
+      <p class = "getFullYear"></p>
+      <p> Street Cliker <span>. Tous Droits Réservés.</span></p>
   </div>
   </footer>
+  <script>
+    const fullYear = document.querySelector(".getFullYear");
+    fullYear.innerHTML = new Date().getFullYear();
+  </script>
 </body>
 </html>

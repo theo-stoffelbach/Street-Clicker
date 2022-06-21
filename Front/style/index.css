@@ -115,7 +115,13 @@ footer {
   display: flex;
   align-items: center;
 }
+#footer_copyright p {
+  padding-right: 5px;
+}
 #footer_copyright p span {
+  opacity: 50%;
+}
+.getFullYear {
   opacity: 50%;
 }
 .two_bonus {
