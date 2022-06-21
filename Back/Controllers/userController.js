@@ -208,21 +208,32 @@ exports.delete = (req, res) => {
 };
 
 exports.login = (req, res) => {
-  const user = new userModel(req.body);
-  const email = user.email;
-  const password = user.password;
+  const user_input = new userModel(req.body);
+  const email = user_input.email;
+  const password_input = user_input.password;
   // const merde2 = password;
 
   userModel
     .findOne({ email: email })
     .then((user) => {
-      const cryptage_password_user = user.password;
-      const password_user = decryptage(cryptage_password_user);
-      if (password_user === password) console.log("BON MDP");
-      else console.log("PAS LE BON MDP");
-      return res.status(200).json(user);
+      console.log(user + "Ca marche ");
+      const password_user = decryptage(user.password);
+      if (password_user === password_input) {
+        return res.status(200).json({
+          response: user,
+          callBack: "Good password :) ",
+        });
+      } else {
+        return res.status(500).json({
+          response: user,
+          errorMessage: "Not the good password :'(",
+        });
+      }
     })
     .catch((err) => {
-      return res.status(400).json(err);
+      console.log("l'adress mail n'existe po");
+      return res
+        .status(404)
+        .json({ errorMessage: "Aucun Résultat pour cette adress mail" });
     });
 };

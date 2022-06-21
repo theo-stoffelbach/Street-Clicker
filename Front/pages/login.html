@@ -1,11 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../style/login.css">
-    <title>Street Clicker</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link rel="stylesheet" href="../style/login.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+  
+  <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js"></script>
+
+  <title>Street Clicker - Login</title>
+
 </head>
 <body>
   <nav id = "menu">
@@ -16,22 +23,22 @@
   </nav>
   <h1>Connexion</h1>
   <main>
-    <form id = "form_login" method="POST">
+    <form id = "form_login" action="" method="POST" onsubmit="return false">
       <input
       type = "email"
       id="inputEmail"
       onkeydown="validatorEmail()"
-      value = "Email"
+      placeholder = "Put your email, please"
       size="30"
       />
       <input
       type = "password"
       id="inputPassword"
       onkeydown="validatorpassword()"
-      value = "**********"
+      placeholder = "Put your password, please"
       size="30"
       />
-      <button id="inputSubmit" class="inValidForm">Submit</button>
+      <button id="inputSubmit" class="inValidForm" onclick="Test()">Submit</button>
   </form>
   </main>
   <footer>
@@ -43,12 +50,12 @@
   </div>
   </footer>
   <script src="../script/login.js"></script>
-  <script>
+  <!-- <script>
     const takeInputEmail = document.querySelector("#inputEmail");
     const takeInputPassword = document.querySelector("#inputPassword");
   
     takeInputEmail.addEventListener('click', function() { takeInputEmail.value = ""; });
     takeInputPassword.addEventListener('click', function() { takeInputPassword.value = ""; });
-  </script>
+  </script> -->
 </body>
 </html>

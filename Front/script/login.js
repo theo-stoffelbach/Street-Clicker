@@ -2,10 +2,6 @@ var emailValidForm,
   passwordValidForm,
   emailValidForm = (passwordValidForm = 0);
 
-console.log(
-  emailValidForm + " = " + passwordValidForm + " = " + emailValidForm
-);
-
 function validatorEmail() {
   let inputEmail = document.getElementById("inputEmail");
   let inputEmailValue = document.getElementById("inputEmail").value;
@@ -29,16 +25,11 @@ function validatorpassword() {
   let inputPasswordValue = document.getElementById("inputPassword").value;
   let inputPasswordList = inputPasswordValue.split("");
 
-  console.log(inputPassword);
-  console.log(inputPasswordList.length);
-
   if (inputPasswordList.length >= 8 && inputPasswordList.length < 32) {
-    console.log("valid");
     inputPassword.classList.add("validPassword");
     inputPassword.classList.remove("inValidPassword");
     passwordValidForm = 1;
   } else {
-    console.log("invalid");
     inputPassword.classList.add("inValidPassword");
     inputPassword.classList.remove("validPassword");
     passwordValidForm = 0;
@@ -52,8 +43,60 @@ function validatorForm() {
   if (passwordValidForm == 1 && emailValidForm == 1) {
     inputForm.classList.add("validForm");
     inputForm.classList.remove("inValidForm");
+
+    // Mettre le back ici
   } else {
     inputForm.classList.add("inValidForm");
     inputForm.classList.remove("validForm");
   }
+}
+
+function Test() {
+  let inputEmailValue = document.getElementById("inputEmail").value;
+  let inputPasswordValue = document.getElementById("inputPassword").value;
+
+  console.log(inputPasswordValue + " ; " + inputEmailValue);
+
+  new axios.post("http://localhost:1337/api/user/login", {
+    email: inputEmailValue,
+    password: inputPasswordValue,
+  })
+    .then((res) => {
+      res.console.log(res);
+      console.log("et oui c'est moi : " + res.data.callBack);
+    })
+    .catch((err) => {
+      console.log(err);
+      let statusRequest = err.response.status;
+      console.log(err.response.data.errorMessage);
+
+      if (statusRequest == 500) {
+        /* Now test if request return error 500 (It's not good password)*/
+        // .remove();
+        var inputPassword = document.getElementById("inputPassword");
+        var p2 = document.createElement("p");
+        var p3 = document.getElementById("inputPassword");
+        p3.parentNode.insertBefore(p2, p3.nextSibling);
+        p2.innerHTML = "* " + err.response.data.errorMessage;
+        p2.style.margin = "0px 0 10% 10%";
+        p2.style.color = "red";
+        inputPassword.style.margin = "5% 0 0 0";
+      } else if (statusRequest == 404) {
+        /* Then test if request return error 404 (email not found)*/
+        var inputEmail = document.getElementById("inputEmail");
+        var pMessageError = document.createElement("p");
+        var inputPassword = document.getElementById("inputPassword");
+
+        inputPassword.parentNode.insertBefore(pMessageError, inputPassword);
+
+        inputEmail.style.margin = "5% 0 0 0";
+
+        pMessageError.innerHTML = "* " + err.response.data.errorMessage;
+        pMessageError.style.margin = "0px 0 10% 10%";
+        pMessageError.style.color = "red";
+      } else {
+        /* Finnaly Error not expected*/
+        console.log("Error not expected ... CodeError : THEO-003");
+      }
+    });
 }

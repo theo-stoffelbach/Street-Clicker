@@ -21,7 +21,7 @@ mongoose
     }
   )
   .then(() => {
-    console.log("conncetion reussit avec la BD");
+    console.log("conncetion reussit avec la BD\n");
   })
   .catch(() => console.log(error));
 
