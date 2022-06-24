@@ -69,10 +69,6 @@ exports.test = (req, res) => {
   // Le test pour créer le register pour admin
   var userData = new userModel(req.body);
 
-  console.log(userData.pseudo);
-
-  console.log("La fonction appeller est test - ");
-
   userModel
     .findOne({ pseudo: userData.pseudo })
     .then((user) => {
@@ -216,14 +212,15 @@ exports.login = (req, res) => {
   userModel
     .findOne({ email: email })
     .then((user) => {
-      console.log(user + "Ca marche ");
       const password_user = decryptage(user.password);
       if (password_user === password_input) {
+        console.log("successful connection - #200");
         return res.status(200).json({
           response: user,
-          callBack: "Good password :) ",
+          callBack: "Good password :)",
         });
       } else {
+        console.log("Wrong password - #500");
         return res.status(500).json({
           response: user,
           errorMessage: "Not the good password :'(",
@@ -231,7 +228,7 @@ exports.login = (req, res) => {
       }
     })
     .catch((err) => {
-      console.log("l'adress mail n'existe po");
+      console.log("wrong email address - #404");
       return res
         .status(404)
         .json({ errorMessage: "Aucun Résultat pour cette adress mail" });

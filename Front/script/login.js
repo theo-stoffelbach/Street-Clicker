@@ -53,49 +53,65 @@ function validatorForm() {
 
 function Test() {
   let inputEmailValue = document.getElementById("inputEmail").value;
-  let inputPasswordValue = document.getElementById("inputPassword").value;
+  var inputEmail = document.getElementById("inputEmail");
 
-  console.log(inputPasswordValue + " ; " + inputEmailValue);
+  let inputPasswordValue = document.getElementById("inputPassword").value;
+  var inputPassword = document.getElementById("inputPassword");
+
+  let returnMessage = document.getElementById("inputPassword").value;
+  var pMessageError = document.getElementById("OUI");
+
+  if (pMessageError != null) {
+    pMessageError.remove();
+    inputPassword.style.cssText = null;
+    inputEmail.style.cssText = null;
+  } else {
+    console.log("il n'existe pas");
+  }
+
+  console.log(returnMessage);
 
   new axios.post("http://localhost:1337/api/user/login", {
     email: inputEmailValue,
     password: inputPasswordValue,
   })
     .then((res) => {
-      res.console.log(res);
       console.log("et oui c'est moi : " + res.data.callBack);
     })
     .catch((err) => {
-      console.log(err);
       let statusRequest = err.response.status;
       console.log(err.response.data.errorMessage);
 
-      if (statusRequest == 500) {
-        /* Now test if request return error 500 (It's not good password)*/
-        // .remove();
-        var inputPassword = document.getElementById("inputPassword");
-        var p2 = document.createElement("p");
-        var p3 = document.getElementById("inputPassword");
-        p3.parentNode.insertBefore(p2, p3.nextSibling);
-        p2.innerHTML = "* " + err.response.data.errorMessage;
-        p2.style.margin = "0px 0 10% 10%";
-        p2.style.color = "red";
-        inputPassword.style.margin = "5% 0 0 0";
-      } else if (statusRequest == 404) {
-        /* Then test if request return error 404 (email not found)*/
-        var inputEmail = document.getElementById("inputEmail");
-        var pMessageError = document.createElement("p");
-        var inputPassword = document.getElementById("inputPassword");
+      if (statusRequest == 404) {
+        /* First test if request return error 404 (email not found)*/
+        var newPMessageError = document.createElement("p");
 
-        inputPassword.parentNode.insertBefore(pMessageError, inputPassword);
+        newPMessageError.innerHTML = "* " + err.response.data.errorMessage;
+        newPMessageError.style.margin = "0px 0 10% 10%";
+        newPMessageError.style.color = "red";
+        newPMessageError.id = "OUI";
 
         inputEmail.style.margin = "5% 0 0 0";
+        inputEmail.parentNode.insertBefore(
+          newPMessageError,
+          inputEmail.nextSibling
+        );
+      } else if (statusRequest == 500) {
+        /* Then test if request return error 500 (It's not good password)*/
+        var pMessageError = document.createElement("p");
 
         pMessageError.innerHTML = "* " + err.response.data.errorMessage;
         pMessageError.style.margin = "0px 0 10% 10%";
         pMessageError.style.color = "red";
+        pMessageError.id = "OUI";
+
+        inputPassword.parentNode.insertBefore(
+          pMessageError,
+          inputPassword.nextSibling
+        );
+        inputPassword.style.margin = "5% 0 0 0";
       } else {
-        /* Finnaly Error not expected*/
+        /* And now Error not expected*/
         console.log("Error not expected ... CodeError : THEO-003");
       }
     });

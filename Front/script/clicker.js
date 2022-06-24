@@ -29,8 +29,8 @@ function damageToEnemies(Damage = 1) {
     getGold();
   }
   actuCalculPercentageBar();
-
 }
+
 function clicker() {
   damageToEnemies(1);
   result++;
@@ -81,7 +81,9 @@ bonusDuringDgt.addEventListener("click", function () {
   let priceBonus = 500;
 
   if (gold >= priceBonus) {
-    setInterval(function () { damageToEnemies(1); }, 1000);
+    setInterval(function () {
+      damageToEnemies(1);
+    }, 1000);
     gold -= 500;
     goldText.innerHTML = gold;
   } else {
