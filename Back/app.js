@@ -3,18 +3,17 @@ const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const CryptoJS = require("crypto-js");
+require("dotenv").config();
 
 const userRouter = require("./rooter/userRouter");
 
 const mongoose = require("mongoose");
 
-// Le TEST CRYPTAGE FIN
-
 app.use(cors());
 
 mongoose
   .connect(
-    "mongodb+srv://fs:FloriantetsonJs...@cluster0.fbppb.mongodb.net/Kitty",
+    `mongodb+srv://${process.env.SECRET_KEY}@cluster0.fbppb.mongodb.net/Kitty`,
     {
       useNewUrlParser: true,
       UseUnifiedTopology: true,

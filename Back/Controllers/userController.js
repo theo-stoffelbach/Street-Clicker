@@ -217,7 +217,7 @@ exports.login = (req, res) => {
         console.log("successful connection - #200");
         return res.status(200).json({
           response: user,
-          callBack: "Good password :)",
+          callBack: "Successful connction",
         });
       } else {
         console.log("Wrong password - #500");

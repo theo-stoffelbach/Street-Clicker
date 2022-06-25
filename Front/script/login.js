@@ -58,11 +58,14 @@ function Test() {
   let inputPasswordValue = document.getElementById("inputPassword").value;
   var inputPassword = document.getElementById("inputPassword");
 
-  let returnMessage = document.getElementById("inputPassword").value;
-  var pMessageError = document.getElementById("OUI");
+  var inputFormValue = document.getElementById("inputSubmit").value;
+  var inputForm = document.getElementById("inputSubmit");
 
-  if (pMessageError != null) {
-    pMessageError.remove();
+  let returnMessage = document.getElementById("inputPassword").value;
+  var newPMessageCallback = document.getElementById("OUI");
+
+  if (newPMessageCallback != null) {
+    newPMessageCallback.remove();
     inputPassword.style.cssText = null;
     inputEmail.style.cssText = null;
   } else {
@@ -77,6 +80,7 @@ function Test() {
   })
     .then((res) => {
       console.log("et oui c'est moi : " + res.data.callBack);
+      inputForm.innerHTML = res.data.callBack;
     })
     .catch((err) => {
       let statusRequest = err.response.status;
@@ -84,29 +88,29 @@ function Test() {
 
       if (statusRequest == 404) {
         /* First test if request return error 404 (email not found)*/
-        var newPMessageError = document.createElement("p");
-
-        newPMessageError.innerHTML = "* " + err.response.data.errorMessage;
-        newPMessageError.style.margin = "0px 0 10% 10%";
-        newPMessageError.style.color = "red";
-        newPMessageError.id = "OUI";
+        newPMessageCallback = document.createElement("p");
 
         inputEmail.style.margin = "5% 0 0 0";
         inputEmail.parentNode.insertBefore(
-          newPMessageError,
+          newPMessageCallback,
           inputEmail.nextSibling
         );
+
+        newPMessageCallback.innerHTML = "* " + err.response.data.errorMessage;
+        newPMessageCallback.style.margin = "0px 0 10% 10%";
+        newPMessageCallback.style.color = "red";
+        newPMessageCallback.id = "OUI";
       } else if (statusRequest == 500) {
         /* Then test if request return error 500 (It's not good password)*/
-        var pMessageError = document.createElement("p");
+        newPMessageCallback = document.createElement("p");
 
-        pMessageError.innerHTML = "* " + err.response.data.errorMessage;
-        pMessageError.style.margin = "0px 0 10% 10%";
-        pMessageError.style.color = "red";
-        pMessageError.id = "OUI";
+        newPMessageCallback.innerHTML = "* " + err.response.data.errorMessage;
+        newPMessageCallback.style.margin = "0px 0 10% 10%";
+        newPMessageCallback.style.color = "red";
+        newPMessageCallback.id = "OUI";
 
         inputPassword.parentNode.insertBefore(
-          pMessageError,
+          newPMessageCallback,
           inputPassword.nextSibling
         );
         inputPassword.style.margin = "5% 0 0 0";
