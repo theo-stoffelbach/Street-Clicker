@@ -1,5 +1,7 @@
 const userModel = require("../models/userModel");
 const CryptoJS = require("crypto-js");
+const jwt = require("jsonwebtoken");
+
 var crypt = {
   secret: `+j&l$?/t{/8?xZk:E~<}&%w>&yT%I!gg&/SVe,;=aqT4&<y?}c#CWrXbEsc!t=xg|T(dNsU".$V)+h$0XzC0=z/Ye$Ap+%>cn,W`,
 };
@@ -68,6 +70,8 @@ exports.userCreator = (req, res) => {
 exports.test = (req, res) => {
   // Le test pour créer le register pour admin
   var userData = new userModel(req.body);
+
+  console.log("C'est moi");
 
   userModel
     .findOne({ pseudo: userData.pseudo })
@@ -148,19 +152,6 @@ exports.test = (req, res) => {
     });
 };
 
-exports.connection = (req, res, next) => {
-  const id = req.params.id;
-
-  userModel
-    .findOne({ _id: id })
-    .then((user) => {
-      return res.status(200).json(user);
-    })
-    .catch((err) => {
-      return res.status(400).json(err);
-    });
-};
-
 exports.getAll = (req, res) => {
   userModel
     .find()
@@ -204,10 +195,20 @@ exports.delete = (req, res) => {
 };
 
 exports.login = (req, res) => {
+  const Test = {
+    username: "Peter",
+    password: "I'm",
+  };
+
+  const accessToken = jwt.sign({ Test }, process.env.ACCESS_TOKEN_SECRET, {
+    expiresIn: 604800,
+  });
+
+  return res.json(accessToken);
+
   const user_input = new userModel(req.body);
   const email = user_input.email;
   const password_input = user_input.password;
-  // const merde2 = password;
 
   userModel
     .findOne({ email: email })
@@ -215,6 +216,7 @@ exports.login = (req, res) => {
       const password_user = decryptage(user.password);
       if (password_user === password_input) {
         console.log("successful connection - #200");
+
         return res.status(200).json({
           response: user,
           callBack: "Successful connction",
@@ -228,9 +230,27 @@ exports.login = (req, res) => {
       }
     })
     .catch((err) => {
+      console.log(err);
       console.log("wrong email address - #404");
       return res
         .status(404)
         .json({ errorMessage: "Aucun Résultat pour cette adress mail" });
     });
+};
+
+exports.authToken = (req, res, next) => {
+  const authheader = req.headers["authorization"];
+  const token = authheader && authheader.split(" ")[1];
+  if (token == null) return res.sendStatus(401);
+
+  jwt.verify(token, process.env.ACCESS_TOKEN_SECRET, (err, user) => {
+    if (err) return res.sendStatus(403);
+    req.user = user;
+    next();
+  });
+};
+
+exports.getTestToken = (req, res, next) => {
+  console.log("Yes ca marche !!");
+  return res.status(200).json("Yes ca marche !!");
 };

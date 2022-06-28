@@ -2,7 +2,6 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const cors = require("cors");
-const CryptoJS = require("crypto-js");
 require("dotenv").config();
 
 const userRouter = require("./rooter/userRouter");
